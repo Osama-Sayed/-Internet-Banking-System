@@ -5,6 +5,11 @@ Internet-Banking-System (Team A)
 ### 1-Concept  
 - PMP
 - Schedule
+- Issue Management and Escalation Plan
+- Quality Management Plan Template
+- Risk Management Plan
+- Risk Management Log
+
 ### 2-Definition 
 ### 2.1-Design
 2.1.1-High-Level 
@@ -12,10 +17,11 @@ Internet-Banking-System (Team A)
 2.1.2-Low-Level 
 - Design
 - Wireframe
-### 2.2-Requirements 
+### 2.2-Req 
 - SIQ
 - SRS
 - Usecase
+- Project Charter
 ### 3-Development
 3.1-Front End 
 - UI
