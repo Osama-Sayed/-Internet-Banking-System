@@ -14,6 +14,7 @@ Internet-Banking-System (Team A)
 ### 2.1-Design
 2.1.1-High-Level 
 - WBS
+
 2.1.2-Low-Level 
 - Design
 - Wireframe
