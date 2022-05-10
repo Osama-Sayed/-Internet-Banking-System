@@ -11,26 +11,19 @@
         
 .bg {
     background-image: url("Resources/Images/AddClientPic.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
     background-size: cover;
 }
     </style>
 </head>
 <body class="bg">
-    <form id="form1" runat="server">
-        <div>
-        </div>
-    </form>
-    <form action="" target="_top" method="post" autocomplete="off" >
+    <form id="DeleteCForm" runat="server" target="_top" method="post" autocomplete="off" >
   <div class="container">
     <h1><center>Delete Client</center></h1>
 	<br>
-	<input type="text" placeholder="Client Username*" name="username" pattern="[a-zA-Z ]+" title="Please enter only letters" required>
-	
-<br>
-<br>
-      <button type="submit" class="signupbtn">Delete</button>
+    <asp:TextBox ID="UsernameDC" runat="server" placeholder="Client Username*" name="name" pattern="[a-zA-Z0-9 ]+" title="Please enter only letters" required ></asp:TextBox>
+    <br>
+    <br>
+    <asp:Button ID="DeleClientBtn" runat="server" Text="Delete" class="DeleC"></asp:Button>
 	  
   </div>
 </form>

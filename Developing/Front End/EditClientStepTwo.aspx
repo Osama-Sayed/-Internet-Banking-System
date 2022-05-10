@@ -5,37 +5,31 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Edit Client</title>
-<link rel="stylesheet" href="Resources/CSS/EditClientStepTwo.css">
+<link rel="stylesheet" href="Resources/CSS/EditClientSecStep.css">
     <link rel="icon" href="Resources/Images/ib.png" type="image/x-icon">
     <style>
         
 .bg {
     background-image: url("Resources/Images/AddClientPic.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
     background-size: cover;
 }
     </style>
 </head>
 <body class="bg">
-    <form id="form1" runat="server">
-        <div>
-        </div>
-    </form>
-
-    <form action="" method="post" autocomplete="off">
+   
+    <form id="EditSecStepForm" runat="server" method="post" autocomplete="off">
   <div class="container">
     <h1><center>Edit Client</center></h1>
 	<br>
-	<input type="text" placeholder="Username*" name="name" pattern="[a-zA-Z0-9 ]+" title="Username can’t include special characters" required>
+    <asp:TextBox ID="UsernameEC" runat="server" placeholder="Username*" name="name" pattern="[a-zA-Z0-9 ]+" title="Username can’t include special characters" required ></asp:TextBox>
 	<br>
-    <input type="password" id="password" placeholder="Password*" name="psw" required>
+    <asp:TextBox ID="passwordEC" runat="server" type="password" placeholder="Password*" name="psw" required ></asp:TextBox>
 	<br>
-    <input type="password" id="id="password" placeholder="Confirm Password*" name="psw" oninput="check(this)" required>
+    <asp:TextBox ID="passwordconEC" runat="server" type="password" placeholder="Confirm Password*" name="psw" oninput="check(this)" required ></asp:TextBox>
 	<br>
 	<script language='javascript' type='text/javascript'>
     function check(input) {
-        if (input.value != document.getElementById('password').value) {
+        if (input.value != document.getElementById('passwordEC').value) {
             input.setCustomValidity('Passwords do not match');
         } else {
             // input is valid -- reset the error message
@@ -43,15 +37,14 @@
         }
     }
     </script>
-<input type="text" placeholder="Account Number*" name="accountnumber" required>
-<br>
-	<input type="email" placeholder="E-mail*" name="clientemail"  required> 
+    <asp:TextBox ID="AccountNumEC" runat="server" type="text" placeholder="Account Number*"  pattern="[0-9]+" title="An Account Number can't include character or special character" name="accountnumber" required ></asp:TextBox>
+    <br>
+    <asp:TextBox ID="EmailEC" runat="server" type="email" placeholder="E-mail*" name="clientemail" title="The email format must be valid" required ></asp:TextBox> 
 	<br>
-	<input type="text" placeholder="Phone Number*" name="phone" pattern="[0-9]+" title="A phone can only have numbers" required>
+    <asp:TextBox ID="PhoneNumEC" runat="server" type="text" placeholder="Phone Number*" name="phone" pattern="[0-9]+" title="A phone can only have numbers" required></asp:TextBox>
 	<br>
-<br>
-     <button type="submit" class="signupbtn">Edit</button>
-	  
+    <br>
+    <asp:Button ID="EditClientBtn" runat="server" Text="Edit" class="EditC"></asp:Button>
   </div>
 </form>
 </body>

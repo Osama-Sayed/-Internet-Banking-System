@@ -8,29 +8,22 @@
 	<link rel="icon" href="Resources/Images/ib.png" type="image/x-icon">
 
 	<meta charset="utf-8">
-	<meta name="description" content="This page has the navigation bar of the bank">
-								
+	<meta name="description" content="This page has the navigation bar of the bank">		
 										<!-- CSS-->
 	<link rel="stylesheet" type="text/css" href="Resources/CSS/clientprofilenavbar.css">
 
 </head>
 <body>
-    <form id="form1" runat="server">
-        <div>
-        </div>
-    </form>
-
+	<form ID="LoginForm" runat="server">
     <div id="allbody">
-		 
 		<header id="top_header">
 				<a class="logolink" href="Home.aspx" target="_top"><img id="header_img" src="Resources/Images/ib.png" /></a>
 
-			<h2 id="logoname">Internet Banking System</h2>
-	      <form id="login">
-		        <button id="buttonlogout"><strong>Logout</strong></button>
-			   
-	      </form>
+				<h2 id="logoname">Internet Banking System</h2>
+				
 		</header>
+		 <asp:Button ID="LogoutB" runat="server" Text="Logout" class="logoutbu" ></asp:Button>
 		</div>
+		</form>
 </body>
 </html>

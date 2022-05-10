@@ -5,25 +5,25 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Home</title>
-	<link rel="stylesheet" href="Resources/CSS/home.css"/>
+	<link rel="stylesheet" href="Resources/CSS/Home.css"/>
 	<link rel="icon" href="Resources/Images/ib.png" type="image/x-icon">
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="HomeForm" runat="server">
         <div>
         </div>
-    </form>
+    
 	<div id="allbody">
 		 
 		<header id="top_header">
 				<a class="logolink" href="Home.aspx"><img id="header_img" src="Resources/Images/ib.png" /></a>
 
 			<h2 id="logoname">Internet Banking System</h2>
-	      <form id="login">
-		        <button id="button1"><strong>Login</strong></button>
-			  <button id="button2"><strong>Register</strong></button>
+	      <div id="login">
+		        <asp:Button id="LoginH" runat="server" Text="Login" class="ButtonL" OnClick="LoginH_Click"></asp:Button>
+			    <asp:Button id="RegisterH" runat="server" Text="Register" class="ButtonR" OnClick="RegisterH_Click"></asp:Button>
 		              <br />
-	      </form>
+	      </div>
 		
 		</header>
 	
@@ -61,9 +61,8 @@
 		<footer id="footer">
 							<p id="f1">Internet Banking System (2022)</p>
 		</footer>
-	
 	</div>	
 	</div>
-	
+	</form>
 </body>
 </html>

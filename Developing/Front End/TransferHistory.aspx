@@ -10,50 +10,28 @@
     <link rel="stylesheet" href="Resources/CSS/TransferHistory.css">
 </head>
 <body>
-    <form id="form1" runat="server">
-        <div>
-        </div>
+    <form id="TransferH" runat="server">
+<h2>Transfer History Table</h2>
+    <asp:Table ID="TransferTable" runat="server">  
+        <asp:TableHeaderRow 
+                runat="server" 
+                Font-Bold="true"
+                >
+                <asp:TableHeaderCell>Source Account Number</asp:TableHeaderCell>
+                <asp:TableHeaderCell>Destination Account Number</asp:TableHeaderCell>
+                <asp:TableHeaderCell>Amount</asp:TableHeaderCell>
+             <asp:TableHeaderCell>Currency</asp:TableHeaderCell>
+             <asp:TableHeaderCell>Date</asp:TableHeaderCell>
+       </asp:TableHeaderRow>
+    <asp:TableRow runat="server">  
+        <asp:TableCell runat="server"></asp:TableCell>  
+        <asp:TableCell runat="server"></asp:TableCell>  
+        <asp:TableCell runat="server"></asp:TableCell> 
+        <asp:TableCell runat="server"></asp:TableCell> 
+        <asp:TableCell runat="server"></asp:TableCell> 
+    </asp:TableRow>   
+</asp:Table>
     </form>
 
-    
-<h2>Transfer History Table</h2>
-
-<table>
-  <tr>
-    <th>Source Account Number</th>
-    <th>Destination Account Number</th>
-    <th>Amount</th>
-	<th>Currency</th>
-    <th>Date</th>
-  </tr>
-  <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-	<td></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-	<td></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-	<td></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-	<td></td>
-    <td></td>
-  </tr>
-</table>
 </body>
 </html>
