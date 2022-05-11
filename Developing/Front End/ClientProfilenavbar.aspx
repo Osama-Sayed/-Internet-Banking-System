@@ -14,7 +14,7 @@
 
 </head>
 <body>
-	<form ID="LoginForm" runat="server">
+	<form ID="ClientProfileNavBarForm" runat="server">
     <div id="allbody">
 		<header id="top_header">
 				<a class="logolink" href="Home.aspx" target="_top"><img id="header_img" src="Resources/Images/ib.png" /></a>
@@ -22,7 +22,7 @@
 				<h2 id="logoname">Internet Banking System</h2>
 				
 		</header>
-		 <asp:Button ID="LogoutB" runat="server" Text="Logout" class="logoutbu" ></asp:Button>
+		 <asp:Button ID="LogoutBtn" runat="server" Text="Logout" class="logoutbu" OnClick="LogoutBtn_Click" ></asp:Button>
 		</div>
 		</form>
 </body>

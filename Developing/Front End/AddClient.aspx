@@ -15,11 +15,11 @@
     </style>
 </head>
 <body class="bg">
-    <form id="AddClientform" runat="server" method="post" autocomplete="off">
+    <form id="AddClientForm" runat="server" method="post" autocomplete="off">
   <div class="container">
     <h1><center>Add Client</center></h1>
 	<br>
-    <asp:TextBox ID="UsernameAC" runat="server" placeholder="Username*" name="name" pattern="[a-zA-Z0-9 ]+" title="Username can’t include special characters" required OnTextChanged="UsernameAC_TextChanged" ></asp:TextBox>
+    <asp:TextBox ID="UsernameAC" runat="server" placeholder="Client Username*" name="username" pattern="[a-zA-Z0-9 ]+" title="Username can’t include special characters" required OnTextChanged="UsernameAC_TextChanged" ></asp:TextBox>
 	<br>
     <asp:TextBox ID="passwordAC" runat="server" type="password" placeholder="Password*" name="psw" required OnTextChanged="passwordAC_TextChanged" ></asp:TextBox>
 	<br>
@@ -43,7 +43,7 @@
 	<asp:TextBox ID="PhoneNumAC" runat="server" type="text" placeholder="Phone Number*" name="phone" pattern="[0-9]+" title="A phone can only have numbers" required OnTextChanged="PhoneNumAC_TextChanged" ></asp:TextBox>
 	<br>
     <br>
-       <asp:Button ID="RegisterAC" runat="server" Text="Add Client" class="AddC" OnClick="RegisterAC_Click"></asp:Button>
+    <asp:Button ID="RegisterBtn" runat="server" Text="Add Client" class="AddC" OnClick="RegisterBtn_Click"></asp:Button>
   </div>
 </form>
 

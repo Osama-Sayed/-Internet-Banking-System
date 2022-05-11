@@ -15,14 +15,14 @@
     </style>
 </head>
 <body class="bg">
-    <form id="EditStepForm" runat="server" method="post" autocomplete="off">
+    <form id="EditClientStepOneForm" runat="server" method="post" autocomplete="off">
   <div class="container">
     <h1><center>Edit Client</center></h1>
 	<br>
-    <asp:TextBox ID="ClientUN" runat="server" placeholder="Client username*" name="name" pattern="[a-zA-Z0-9 ]+" title="Username can’t include special characters" required ></asp:TextBox>
+    <asp:TextBox ID="ClientUsernameEC" runat="server" placeholder="Client username*" name="name" pattern="[a-zA-Z0-9 ]+" title="Username can’t include special characters" required OnTextChanged="ClientUsernameEC_TextChanged"></asp:TextBox>
 	<br>
     <br>
-      <asp:Button ID="RegisterAC" runat="server" Text="Edit" class="EditClient" ></asp:Button>
+      <asp:Button ID="RegisterBtn" runat="server" Text="Edit" class="EditClient" OnClick="RegisterBtn_Click" ></asp:Button>
   </div>
 </form>
 </body>
