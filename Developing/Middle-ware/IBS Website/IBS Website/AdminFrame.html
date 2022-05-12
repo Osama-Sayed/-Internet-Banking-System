@@ -1,0 +1,23 @@
+﻿<head>
+    <base target="service" />
+    <meta charset="utf-8">
+    <meta name="description" content="Admin Dashboard">
+    <title>Admin Dashboard</title>
+    <link rel="icon" href="Resources/Images/ib.png" type="image/x-icon">
+
+</head>
+<!-- header -->
+<frameset border="0" noresize="yes" rows="20%,*">
+    <frame scrolling="no" src="ClientProfilenavbar.aspx" />
+
+    <!--menu -->
+    <frameset border="2px;" cols="25%,*">
+        <frame scrolling="no" src="Adminsidemenu.aspx" />
+
+        <!-- main body -->
+        <frameset rows="*">
+            <frame scrolling="yes" name="patient" src="imgbackadmin.aspx" />
+
+        </frameset>
+    </frameset>
+</frameset>

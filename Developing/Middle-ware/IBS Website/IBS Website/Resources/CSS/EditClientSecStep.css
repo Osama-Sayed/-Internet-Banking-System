@@ -1,0 +1,54 @@
+﻿* {
+    box-sizing: border-box;
+    font-family: Verdana;
+    color: black;
+}
+
+.bg {
+    background-image: url("EditClientPic2.jpg");
+    background-size: cover;
+}
+
+input[type=text], input[type=email], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid #454545;
+    background-color: white;
+}
+
+    input[type=text], input[type=email]:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0 30px white inset;
+        font-family: Verdana;
+    }
+
+        input[type=text]:focus, input[type=email]:focus, input[type=password]:focus {
+            background-color: white;
+            outline: none;
+        }
+
+.EditC:hover {
+    opacity: 1;
+}
+
+.EditC {
+    padding: 14px 40px;
+    background-color: #f0600d;
+    width: 50%;
+    position: absolute;
+    width: 67%;
+    border: none;
+    opacity: 0.9;
+}
+
+.container {
+    margin-left: 15%;
+    margin-right: 15%;
+    padding: 20px;
+}
+
+input:valid {
+    border-bottom: 1px solid #f0600d;
+}
