@@ -9,7 +9,7 @@
     <link rel="icon" href="Resources/Images/ib.png" type="image/x-icon">
 
     										<!-- CSS-->
-	<link rel="stylesheet" type="text/css" href="Resources/CSS/clientprofilesidemenu.css">
+	<link rel="stylesheet" type="text/css" href="Resources/CSS/ClientProfilesidemenu.css">
 </head>
 <body>
     <form id="ClientProfileSideMneuForm" runat="server">

@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Add Client</title>
-    <link rel="stylesheet" href="Resources/CSS/ADDClientt.css">
+    <link rel="stylesheet" href="Resources/CSS/AddClient.css">
     <link rel="icon" href="Resources/Images/ib.png" type="image/x-icon">
     <style>
         

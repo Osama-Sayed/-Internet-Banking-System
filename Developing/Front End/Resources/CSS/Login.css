@@ -34,7 +34,7 @@ input[type=text], input[type=email], input[type=password] {
     background-color: #f0600d;
     width: 50%;
     position: absolute;
-    width: 64%;
+    width: 65%;
     border: none;
     opacity: 0.9;
 }
@@ -47,6 +47,6 @@ input[type=text], input[type=email], input[type=password] {
     background-color: white;
 }
 
-input:valid  {
+input:valid {
     border-bottom: 1px solid #f0600d;
 }

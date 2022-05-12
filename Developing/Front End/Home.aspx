@@ -14,8 +14,8 @@
 	<div id="allbody">
 		 
 		<header id="top_header">
-			<a class="logolink" href="Home.aspx"><img id="header_img" src="Resources/Images/ib.png" /></a>
-			<h2 id="logoname">Internet Banking System</h2>
+			<a class="logolink" href="Home.aspx"><img id="header_img" src="Resources/Images/ib.png" /> <h2 id="logoname">Internet Banking System</h2></a>
+			
 			<div id="login">
 		        <asp:Button id="LoginH" runat="server" Text="Login" class="ButtonL" OnClick="LoginH_Click"></asp:Button>
 			    <asp:Button id="RegisterH" runat="server" Text="Register" class="ButtonR" OnClick="RegisterH_Click"></asp:Button>

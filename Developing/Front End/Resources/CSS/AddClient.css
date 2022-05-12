@@ -5,7 +5,9 @@
 }
 
 .bg {
-    background-image: url("EditClientPic2.jpg");
+    background-image: url("Resources/Images/AddClientPic.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
     background-size: cover;
 }
 
@@ -29,16 +31,16 @@ input[type=text], input[type=email], input[type=password] {
             outline: none;
         }
 
-.EditC:hover {
+.AddC:hover {
     opacity: 1;
 }
 
-.EditC {
+.AddC {
     padding: 14px 40px;
     background-color: #f0600d;
     width: 50%;
     position: absolute;
-    width: 67%;
+    width: 65.3%;
     border: none;
     opacity: 0.9;
 }

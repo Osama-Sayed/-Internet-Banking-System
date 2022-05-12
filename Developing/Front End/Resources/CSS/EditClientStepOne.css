@@ -1,14 +1,16 @@
-﻿* {
+﻿
+* {
     box-sizing: border-box;
     font-family: Verdana;
     color: black;
 }
 
 .bg {
-    background-image: url("Resources/Images/bank.jpg");
+    background-image: url("EditClientPic1.jpg");
+    background-size: cover;
 }
 
-input[type=text], input[type=email] {
+input[type=text], input[type=email], input[type=password] {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -23,33 +25,21 @@ input[type=text], input[type=email] {
         font-family: Verdana;
     }
 
-        input[type=text]:focus, input[type=email]:focus {
+        input[type=text]:focus, input[type=email]:focus, input[type=password]:focus {
             background-color: white;
             outline: none;
         }
 
-.savcur {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    box-sizing: border-box;
-    border: none;
-    border-bottom: 2px solid #454545;
-    background-color: white;
-    font-family: Verdana;
-    background-color: white;
-}
-
-.AddA:hover {
+.EditClient:hover {
     opacity: 1;
 }
 
-.AddA {
+.EditClient {
     padding: 14px 40px;
     background-color: #f0600d;
     width: 50%;
     position: absolute;
-    width: 66%;
+    width: 65.5%;
     border: none;
     opacity: 0.9;
 }

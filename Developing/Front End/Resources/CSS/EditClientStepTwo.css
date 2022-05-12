@@ -1,12 +1,11 @@
-﻿
-* {
+﻿* {
     box-sizing: border-box;
     font-family: Verdana;
     color: black;
 }
 
 .bg {
-    background-image: url("EditClientPic1.jpg");
+    background-image: url("EditClientPic2.jpg");
     background-size: cover;
 }
 
@@ -30,16 +29,16 @@ input[type=text], input[type=email], input[type=password] {
             outline: none;
         }
 
-.EditClient:hover {
+.EditC:hover {
     opacity: 1;
 }
 
-.EditClient {
+.EditC {
     padding: 14px 40px;
     background-color: #f0600d;
     width: 50%;
     position: absolute;
-    width: 64%;
+    width: 65%;
     border: none;
     opacity: 0.9;
 }
