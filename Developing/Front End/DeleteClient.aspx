@@ -16,14 +16,14 @@
     </style>
 </head>
 <body class="bg">
-    <form id="DeleteCForm" runat="server" target="_top" method="post" autocomplete="off" >
+    <form id="DeleteClientForm" runat="server" target="_top" method="post" autocomplete="off" >
   <div class="container">
     <h1><center>Delete Client</center></h1>
 	<br>
-    <asp:TextBox ID="UsernameDC" runat="server" placeholder="Client Username*" name="name" pattern="[a-zA-Z0-9 ]+" title="Please enter only letters" required ></asp:TextBox>
+    <asp:TextBox ID="ClientUsernameDC" runat="server" placeholder="Client Username*" name="name" pattern="[a-zA-Z0-9 ]+" title="Please enter only letters" required OnTextChanged="ClientUsernameDC_TextChanged" ></asp:TextBox>
     <br>
     <br>
-    <asp:Button ID="DeleClientBtn" runat="server" Text="Delete" class="DeleC"></asp:Button>
+    <asp:Button ID="DeleteClientBtn" runat="server" Text="Delete" class="DeleC" OnClick="DeleteClientBtn_Click"></asp:Button>
 	  
   </div>
 </form>

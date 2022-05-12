@@ -10,35 +10,29 @@
 </head>
 <body>
     <form id="HomeForm" runat="server">
-        <div>
-        </div>
-    
+  
 	<div id="allbody">
 		 
 		<header id="top_header">
-				<a class="logolink" href="Home.aspx"><img id="header_img" src="Resources/Images/ib.png" /></a>
-
+			<a class="logolink" href="Home.aspx"><img id="header_img" src="Resources/Images/ib.png" /></a>
 			<h2 id="logoname">Internet Banking System</h2>
-	      <div id="login">
+			<div id="login">
 		        <asp:Button id="LoginH" runat="server" Text="Login" class="ButtonL" OnClick="LoginH_Click"></asp:Button>
 			    <asp:Button id="RegisterH" runat="server" Text="Register" class="ButtonR" OnClick="RegisterH_Click"></asp:Button>
-		              <br />
-	      </div>
-		
+		        <br />
+			</div>
 		</header>
-	
-			
+
 	<div id="all_section">
-	
-			         <img id="section_img" src="Resources/Images/bank.jpg" /> 
+		<img id="section_img" src="Resources/Images/bank.jpg" /> 
 		<section>
 	           <article id="article">
 			         <header>
 					    <h1>Welcome To QB BANK </h1>
 					 </header>
 					 <p id="first_p">
-					     QB Bank (QB Group) (Arabic: بنكى العربى) is a
-						 Arabic multinational commercial bank headquartered in Egypt, Doha, Qatar. 
+					     QB Bank (QB Group) (Arabic: بنكى العربى) is an
+						 Arab multinational commercial bank headquartered in Egypt, Doha, Qatar. 
 						 It was founded in 2021 and currently has subsidiaries<br /> and associates
 						 in 31 countries spanning three continents. The bank's ownership is evenly divided 
 						 between the Egypt Investment Authority and members of the public.
@@ -59,7 +53,7 @@
                
 		</section>
 		<footer id="footer">
-							<p id="f1">Internet Banking System (2022)</p>
+				<p id="f1">Internet Banking System (2022)</p>
 		</footer>
 	</div>	
 	</div>

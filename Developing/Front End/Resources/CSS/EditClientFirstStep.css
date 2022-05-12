@@ -39,7 +39,7 @@ input[type=text], input[type=email], input[type=password] {
     background-color: #f0600d;
     width: 50%;
     position: absolute;
-    width: 67%;
+    width: 64%;
     border: none;
     opacity: 0.9;
 }

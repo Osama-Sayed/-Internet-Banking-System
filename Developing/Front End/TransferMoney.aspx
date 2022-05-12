@@ -11,17 +11,17 @@
 </head>
 <body>
     
-    <form id="TMForm" runat="server" target="_top" method="post" autocomplete="off" >
+    <form id="TransferMoneyForm" runat="server" target="_top" method="post" autocomplete="off" >
   <div class="container">
     <h1><center>Transfer Money</center></h1>
 	<br>
-	<asp:TextBox ID="SourceAN" runat="server" type="text" placeholder="Source Account Number*" name="Sourceaccno" pattern="[0-9]+" title="An Source Account Number can't include character or special character" required></asp:TextBox>
+	<asp:TextBox ID="SourceTM" runat="server" type="text" placeholder="Source Account Number*" name="Sourceaccno" pattern="[0-9]+" title="An Source Account Number can't include character or special character" required OnTextChanged="SourceTM_TextChanged"></asp:TextBox>
 	<br>
-    <asp:TextBox ID="DestinationAN" runat="server" type="text" placeholder="Destination Account Number*" name="Destinationaccno" pattern="[0-9]+" title="A Destination Account Number can't include character or special character" required></asp:TextBox>
+    <asp:TextBox ID="DestinationTM" runat="server" type="text" placeholder="Destination Account Number*" name="Destinationaccno" pattern="[0-9]+" title="A Destination Account Number can't include character or special character" required OnTextChanged="DestinationTM_TextChanged"></asp:TextBox>
 	<br>
-	<asp:TextBox ID="Amount" runat="server" type="text" placeholder="Amount*" name="Amount" pattern="[0-9]+" title="An Amount can't have characters or special character" required></asp:TextBox>
+	<asp:TextBox ID="AmountTM" runat="server" type="text" placeholder="Amount*" name="Amount"  pattern="[+]?([0-9]*[.])?[0-9]+" title="Amount field can only contain positive numbers" required OnTextChanged="AmountTM_TextChanged"></asp:TextBox>
 	<br>
-	<asp:DropDownList ID="CurrencyDDL" runat="server" class="currency" name="currency">
+	<asp:DropDownList ID="CurrencyTM" runat="server" class="currency" name="currency" OnSelectedIndexChanged="CurrencyTM_SelectedIndexChanged">
 
     <asp:ListItem Value="">Select Currency</asp:ListItem>
     <asp:ListItem value="EGP">Egyptian Pound</asp:ListItem>
@@ -31,7 +31,7 @@
     </asp:DropDownList>
 <br>
 <br>
-      <asp:Button ID="TransferM" runat="server" Text="Transfer" class="TransferBtn"></asp:Button>
+      <asp:Button ID="TransferBtn" runat="server" Text="Transfer" class="TransferBtn" OnClick="TransferBtn_Click"></asp:Button>
   </div>
 </form>
 </body>

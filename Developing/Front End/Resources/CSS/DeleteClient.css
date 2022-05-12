@@ -29,30 +29,25 @@ input[type=text], input[type=email] {
         }
 
 
-button {
-    color: white;
-    padding: 30px 50px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    opacity: 0.9;
+
+.DeleC:hover {
+    opacity: 1;
 }
 
-    button:hover {
-        opacity: 1;
-    }
-
-.signupbtn {
+.DeleC {
     padding: 14px 40px;
     background-color: #f0600d;
+    width: 50%;
+    position: absolute;
+    width: 67%;
+    border: none;
+    opacity: 0.9;
 }
 
 .container {
     margin-left: 15%;
     margin-right: 15%;
     padding: 20px;
-    margin-top:80px;
 }
 
 input:valid {

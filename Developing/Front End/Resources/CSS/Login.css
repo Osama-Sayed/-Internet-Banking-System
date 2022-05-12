@@ -25,29 +25,18 @@ input[type=text], input[type=email], input[type=password] {
             outline: none;
         }
 
-button {
-    color: white;
-    padding: 30px 50px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    opacity: 0.9;
+.LoginCA:hover {
+    opacity: 1;
 }
 
-    button:hover {
-        opacity: 1;
-    }
-
-.signupbtn {
+.LoginCA {
     padding: 14px 40px;
     background-color: #f0600d;
     width: 50%;
     position: absolute;
-}
-
-.signupbtn {
     width: 64%;
+    border: none;
+    opacity: 0.9;
 }
 
 .container {
@@ -58,6 +47,6 @@ button {
     background-color: white;
 }
 
-input:valid {
+input:valid  {
     border-bottom: 1px solid #f0600d;
 }

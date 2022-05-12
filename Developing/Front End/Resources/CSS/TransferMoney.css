@@ -40,7 +40,7 @@ input[type=text], input[type=email] {
     background-color: white;
 }
 
-button {
+.TransferBtn {
     color: white;
     padding: 30px 50px;
     margin: 8px 0;
@@ -48,15 +48,12 @@ button {
     cursor: pointer;
     width: 100%;
     opacity: 0.9;
-}
-
-    button:hover {
-        opacity: 1;
-    }
-
-.signupbtn {
     padding: 14px 40px;
     background-color: #f0600d;
+}
+
+.TransferBtn:hover {
+    opacity: 1;
 }
 
 .container {

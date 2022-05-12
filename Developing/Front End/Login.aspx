@@ -10,16 +10,16 @@
     <meta charset="utf-8">
 </head>
 <body>
-    <form ID="form1" runat="server" method="post" autocomplete="off">
+    <form ID="LoginForm" runat="server" method="post" autocomplete="off">
     <div class="container">
     <h1><center>Login</center></h1>
 	<br>
-	<asp:TextBox ID="UsernameL" runat="server" type="text" placeholder="Username*" name="name" pattern="[a-zA-Z0-9 ]+" title="Username can’t include special characters" required OnTextChanged="UsernameL_TextChanged"></asp:TextBox>
+	<asp:TextBox ID="UsernameL" runat="server" type="text" placeholder="Username*" name="name" pattern="[a-zA-Z0-9 ]+" title="Username can’t include special characters" required OnTextChanged="UsernameL_TextChanged1" ></asp:TextBox>
 	<br>
-    <asp:TextBox ID="passwordL" runat="server" type="password"  placeholder="Password*" name="psw" required OnTextChanged="passwordL_TextChanged"></asp:TextBox>
+    <asp:TextBox ID="PasswordL" runat="server" type="password"  placeholder="Password*" name="psw" required OnTextChanged="PasswordL_TextChanged" ></asp:TextBox>
 	<br>
     <br>
-      <asp:Button ID="LoginB" runat="server" Text="Login" class="LoginCA" OnClick="LoginB_Click"></asp:Button>
+      <asp:Button ID="LoginBtn" runat="server" Text="Login" class="LoginCA" OnClick="LoginBtn_Click" ></asp:Button>
   </div>
 </form>
 </body>

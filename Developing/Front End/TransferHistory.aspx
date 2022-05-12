@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="Resources/CSS/TransferHistory.css">
 </head>
 <body>
-    <form id="TransferH" runat="server">
-<h2>Transfer History Table</h2>
+    <form id="TransferHistoryForm" runat="server">
+    <h2>Transfer History Table</h2>
     <asp:Table ID="TransferTable" runat="server">  
         <asp:TableHeaderRow 
                 runat="server" 
@@ -30,7 +30,7 @@
         <asp:TableCell runat="server"></asp:TableCell> 
         <asp:TableCell runat="server"></asp:TableCell> 
     </asp:TableRow>   
-</asp:Table>
+    </asp:Table>
     </form>
 
 </body>
