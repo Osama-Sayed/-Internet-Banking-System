@@ -15,6 +15,12 @@ namespace IBS_Website
         MySqlConnection connection = new MySqlConnection(connstring);
         string userName;
         string password;
+        string confirmPassword;
+        string accountNumber;
+        string email;
+        string phoneNumber;
+        int client_ID = new Random().Next(9000);
+       
         
         
         protected void Page_Load(object sender, EventArgs e)
@@ -60,12 +66,62 @@ namespace IBS_Website
 
         protected void RegisterBtn_Click(object sender, EventArgs e)
         {
-            UsernameCR;
-            PasswordCR;
-            PasswordConfCR;
-            AccountNumCR;
-            EmailCR;
-            PhoneNumCR;
+            userName= UsernameCR.Text;
+            password= PasswordCR.Text;
+            confirmPassword= PasswordConfCR.Text;
+            accountNumber =AccountNumCR.Text;
+            email= EmailCR.Text;
+            phoneNumber= PhoneNumCR.Text;
+        }
+
+        protected bool UserNameisUnique() {
+
+            string sqlQuery = "select ClientID from client where UserName = @UserName";
+            MySqlCommand command = new MySqlCommand(sqlQuery, connection);
+            command.Parameters.Add("@UserName", MySqlDbType.VarChar, 20);
+            command.Parameters["@UserName"].Value = userName;
+
+            MySqlDataReader read = command.ExecuteReader();
+            if (read.Read())
+            {
+                read.Close();
+                this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' this username is already taken ');", true);
+                return false;
+            }
+            return true;
+        }
+
+        protected bool ConfirmPasswordEqualsPassword() {
+            if (confirmPassword == password)
+            {
+                return true;
+            }
+            else 
+            {
+                this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' passwords don’t match ');", true);
+                return false;
+            }
+        }
+        protected void AddClientPhoneNumber()
+        {
+            string sqlQuery = "insert into clientphonenumber (PhoneID, ClientID, PhoneNumber) values (@Phoneid, @ClientID, @PhoneNumber)";
+            MySqlCommand command = new MySqlCommand(sqlQuery, connection);
+            command.Parameters.Add("@Phoneid", MySqlDbType.Int32);
+            command.Parameters.Add("@ClientID", MySqlDbType.Int32);
+            command.Parameters.Add("@PhoneNumber", MySqlDbType.Int32);
+
+            command.Parameters["@Phoneid"].Value = new Random().Next(9000);
+            command.Parameters["@ClientID"].Value = client_ID;
+            command.Parameters["@PhoneNumber"].Value = int.Parse(phoneNumber);
+
+            command.ExecuteNonQuery();
+        }
+        protected void addAccount()
+        {
+            string sqlQuery = "";
+            MySqlCommand command = new MySqlCommand(sqlQuery, connection);
+
+
         }
     }
 }

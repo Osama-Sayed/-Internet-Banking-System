@@ -151,6 +151,7 @@
     <Content Include="AddClient.aspx" />
     <Content Include="AdminFrame.html" />
     <Content Include="Adminsidemenu.aspx" />
+    <Content Include="ClientFrame.html" />
     <Content Include="ClientProfilenavbar.aspx" />
     <Content Include="clientprofilesidemenu.aspx" />
     <Content Include="ClientRegistration.aspx" />
@@ -165,6 +166,8 @@
     <Content Include="L_Picture_Frame.aspx" />
     <Content Include="RegisterFrame.html" />
     <Content Include="Resources\CSS\AddAccou.css" />
+    <Content Include="Resources\CSS\AddAccount.css" />
+    <Content Include="Resources\CSS\AddClient.css" />
     <Content Include="Resources\CSS\ADDClientt.css" />
     <Content Include="Resources\CSS\clientprofilenavbar.css" />
     <Content Include="Resources\CSS\clientprofilesidemenu.css" />
@@ -172,6 +175,8 @@
     <Content Include="Resources\CSS\DeleteClient.css" />
     <Content Include="Resources\CSS\EditClientFirstStep.css" />
     <Content Include="Resources\CSS\EditClientSecStep.css" />
+    <Content Include="Resources\CSS\EditClientStepOne.css" />
+    <Content Include="Resources\CSS\EditClientStepTwo.css" />
     <Content Include="Resources\CSS\Home.css" />
     <Content Include="Resources\CSS\imgback.css" />
     <Content Include="Resources\CSS\Login.css" />
