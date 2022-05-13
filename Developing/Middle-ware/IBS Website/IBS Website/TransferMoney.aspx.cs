@@ -12,7 +12,7 @@ namespace IBS_Website
         HttpContext req;
         float amount, balance;
         static string databaseName = "internet_banking_system";
-        static string connstring = string.Format("Server=10.145.2.180; persistsecurityinfo=True ;database={0}; UID=user;password=123456; SslMode = none", databaseName);
+        static string connstring = string.Format("Server=192.168.1.13; persistsecurityinfo=True ;database={0}; UID=user;password=123456; SslMode = none", databaseName);
         MySqlConnection connection = new MySqlConnection(connstring);
         string client_ID = Login.client_ID;
         string sourceAcoounrClientID;
@@ -51,6 +51,7 @@ namespace IBS_Website
                             if (amountShouldOnlyBeUnderTwentyThousand(amount))
                             {
                                 addTransfer(sourceAccountNum, destinationAccountNum);
+                                
                             }
                             else 
                             {
@@ -196,10 +197,12 @@ namespace IBS_Website
                 command = new MySqlCommand(queryString, connection);
                 command.ExecuteNonQuery();
             }
-            this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert('Transfered successfully');", true);
+            this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert('Transfered successfully');window.location='ClientFrame.html';", true);
+            //Response.Redirect("ClientFrame.html");
+
 
             //command.ExecuteNonQuery();
-            
+
         }
         protected float subAmountFromBalance() {
             return balance - amount;

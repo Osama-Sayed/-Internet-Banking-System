@@ -31,7 +31,7 @@ namespace IBS_Website
             }
 
         }
-
+      
 
         protected void ClientUsernameAA_TextChanged(object sender, EventArgs e)
         {
@@ -55,7 +55,7 @@ namespace IBS_Website
             accountNumber = int.Parse(NewAccountNumAA.Text);
             Client_ID = "1";
 
-            string sql = "SELECT ClientID , AdminUserName from client where userName= @UserName ";
+            string sql ="SELECT ClientID , AdminUserName from client where userName= @UserName ";
 
             string queryString = "INSERT INTO accounts(AccountNumber, ClientID , AccountType , AdminUserName) VALUES (@AccNum,@ID,@Type,@AdminName)";
 
@@ -76,7 +76,7 @@ namespace IBS_Website
                 {
                     return;
                 }
-
+                
                 command = new MySqlCommand(queryString, connection);
                 command.Parameters.Add("@AccNum", MySqlDbType.Int32);
                 command.Parameters.Add("@ID", MySqlDbType.Int32);
@@ -100,7 +100,7 @@ namespace IBS_Website
                 this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' Account is successfully created ');", true);
 
             }
-            else
+            else 
             {
                 this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' This Client User Name Doesn't Excit ');", true);
 

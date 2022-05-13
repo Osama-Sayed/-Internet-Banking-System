@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Windows;
 using MySql.Data.MySqlClient;
 
 namespace IBS_Website
@@ -23,7 +24,7 @@ namespace IBS_Website
             }
             catch (Exception ex)
             {
-                this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' Server is not responding please check your connections ');", true);
+                this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' Server is not responding please check your connections '); windows.loaction ='LoginFrame.html';", true);
             }
 
         }
@@ -55,7 +56,7 @@ namespace IBS_Website
             {
                 client_ID= read.GetString(0);
                 read.Close();
-                Response.Redirect("frame.html");
+                Response.Redirect("ClientFrame.html");
 
             }
             else {
@@ -77,8 +78,8 @@ namespace IBS_Website
                 else 
                 {
 
-                    this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' username or password is wrong ');", true);
-
+                    this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' username or password is wrong '); windows.loaction ='LoginFrame.html';", true);
+                    //MessageBox.Show("username or password is wrong","ERROR");
                 }
             }
         }

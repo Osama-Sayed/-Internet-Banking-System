@@ -14,12 +14,13 @@
 <body>
     <form id="ClientProfileSideMneuForm" runat="server">
          <ul class="sidenav">
-    <li id="TransferMoneyCPSM"><a class="linkstyle" href="TransferMoney.aspx">Transfer Money</a></li>  
-    <li id="TransferHistoryCPSM"><a class="linkstyle" href="TransferHistory.aspx">Transfer History</a></li>
+    <li id="TransferMoneyCPSM"><asp:HyperLink ID="TransferMoneyCP" class="linkstyle" runat="server" NavigateUrl="TransferMoney.aspx">Transfer Money</asp:HyperLink></li> 
+    <li id="TransferHistoryCPSM"><asp:HyperLink ID="TransferHistoryCP" class="linkstyle" runat="server" NavigateUrl="TransferHistory.aspx">Transfer History</asp:HyperLink></li>
     </ul>
     </form>
     
    
+
 
 </body>
 </html>

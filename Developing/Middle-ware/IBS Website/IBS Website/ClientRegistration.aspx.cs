@@ -11,15 +11,16 @@ namespace IBS_Website
     public partial class ClientRegistration : System.Web.UI.Page
     {
         static string databaseName = "internet_banking_system";
-        static string connstring = string.Format("Server=10.145.2.180; persistsecurityinfo=True ;database={0}; UID=user;password=123456; SslMode = none", databaseName);
+        static string connstring = string.Format("Server=192.168.1.13; persistsecurityinfo=True ;database={0}; UID=user;password=123456; SslMode = none", databaseName);
         MySqlConnection connection = new MySqlConnection(connstring);
         string userName;
         string password;
         string confirmPassword;
-        string accountNumber;
+        int accountNumber = new Random().Next(9000);
         string email;
         string phoneNumber;
         int client_ID = new Random().Next(9000);
+        //int accountNumber = new Random().Next(9000);
        
         
         
@@ -69,9 +70,22 @@ namespace IBS_Website
             userName= UsernameCR.Text;
             password= PasswordCR.Text;
             confirmPassword= PasswordConfCR.Text;
-            accountNumber =AccountNumCR.Text;
+            accountNumber =int.Parse(AccountNumCR.Text);
             email= EmailCR.Text;
             phoneNumber= PhoneNumCR.Text;
+
+            if (UserNameisUnique())
+            {
+                if (ConfirmPasswordEqualsPassword())
+                {
+                  
+                    addClient();
+                    addAccount();
+                    addClientPhoneNumber();
+                    Response.Redirect("Home.aspx");
+                    
+                }
+            }
         }
 
         protected bool UserNameisUnique() {
@@ -88,6 +102,7 @@ namespace IBS_Website
                 this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' this username is already taken ');", true);
                 return false;
             }
+            read.Close();
             return true;
         }
 
@@ -102,7 +117,7 @@ namespace IBS_Website
                 return false;
             }
         }
-        protected void AddClientPhoneNumber()
+        protected void addClientPhoneNumber()
         {
             string sqlQuery = "insert into clientphonenumber (PhoneID, ClientID, PhoneNumber) values (@Phoneid, @ClientID, @PhoneNumber)";
             MySqlCommand command = new MySqlCommand(sqlQuery, connection);
@@ -118,8 +133,35 @@ namespace IBS_Website
         }
         protected void addAccount()
         {
-            string sqlQuery = "";
+            string sqlQuery = "insert into accounts (AccountNumber, ClientID) values(@accountNumber, @clientID)";
             MySqlCommand command = new MySqlCommand(sqlQuery, connection);
+            command.Parameters.Add("@accountNumber",MySqlDbType.Int32);
+            command.Parameters.Add("@clientID", MySqlDbType.Int32);
+
+            command.Parameters["@accountNumber"].Value = accountNumber;
+            command.Parameters["@clientID"].Value = client_ID;
+            
+
+            command.ExecuteNonQuery();
+
+        }
+        protected void addClient() {
+            
+            string sqlQuery = "insert into client (ClientID, UserName, Email, Password) values (@clientID, @username, @email, @pass)";
+            MySqlCommand command = new MySqlCommand(sqlQuery, connection);
+            command.Parameters.Add("@clientID", MySqlDbType.Int32);
+            command.Parameters.Add("@username", MySqlDbType.VarChar,20);
+            command.Parameters.Add("@email",MySqlDbType.VarChar,50);
+            command.Parameters.Add("@pass",MySqlDbType.VarChar,50);
+
+            command.Parameters["@clientID"].Value = client_ID;
+            command.Parameters["@username"].Value = userName;
+            command.Parameters["@email"].Value = email;
+            command.Parameters["@pass"].Value = password;
+
+            command.ExecuteNonQuery();
+
+            this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' User registered succesfully ');", true);
 
 
         }

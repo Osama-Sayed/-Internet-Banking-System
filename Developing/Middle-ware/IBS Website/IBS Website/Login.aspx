@@ -19,7 +19,7 @@
     <asp:TextBox ID="PasswordL" runat="server" type="password"  placeholder="Password*" name="psw" required OnTextChanged="PasswordL_TextChanged" ></asp:TextBox>
 	<br>
     <br>
-      <asp:Button ID="LoginBtn" runat="server" Text="Login" class="LoginCA" OnClick="LoginBtn_Click" OnClientClick="target ='_blank';"></asp:Button>
+      <asp:Button ID="LoginBtn" runat="server" Text="Login" class="LoginCA" OnClick="LoginBtn_Click" OnClientClick="target ='_top';"></asp:Button>
   </div>
 </form>
 </body>

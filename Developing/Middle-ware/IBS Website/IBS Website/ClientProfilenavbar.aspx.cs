@@ -16,7 +16,7 @@ namespace IBS_Website
 
         protected void LogoutBtn_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("Home.aspx"); 
         }
     }
 }
