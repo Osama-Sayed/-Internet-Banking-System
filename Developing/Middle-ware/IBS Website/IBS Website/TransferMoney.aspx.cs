@@ -12,9 +12,9 @@ namespace IBS_Website
         HttpContext req;
         float amount, balance;
         static string databaseName = "internet_banking_system";
-        static string connstring = string.Format("Server=10.145.1.6; persistsecurityinfo=True ;database={0}; UID=user;password=123456; SslMode = none", databaseName);
+        static string connstring = string.Format("Server=10.145.2.180; persistsecurityinfo=True ;database={0}; UID=user;password=123456; SslMode = none", databaseName);
         MySqlConnection connection = new MySqlConnection(connstring);
-        string client_ID = "1";
+        string client_ID = Login.client_ID;
         string sourceAcoounrClientID;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -160,23 +160,12 @@ namespace IBS_Website
         }
         protected void addTransfer(string sourceAccountNumber, string destinationAccountNumber) {
             balance = subAmountFromBalance();
-            string queryString = string.Format("UPDATE accounts SET Balance = {0} WHERE AccountNumber = {1};", balance,sourceAccountNumber);
-            MySqlCommand command = new MySqlCommand(queryString, connection);
-            command.ExecuteNonQuery();
-            queryString = string.Format("Select Balance from accounts where AccountNumber = {0}; ", destinationAccountNumber);
-            command = new MySqlCommand(queryString, connection);
-            MySqlDataReader read = command.ExecuteReader();
-            if(read.Read())
-            {
-                balance = read.GetFloat(0);
-                read.Close();
-                queryString = string.Format("UPDATE accounts SET Balance = {0} WHERE AccountNumber = {1};", balance+amount, destinationAccountNumber);
-                command = new MySqlCommand(queryString, connection);
-                command.ExecuteNonQuery();
-            }
+            string queryString;
+            MySqlCommand command;
+            
             Random rand = new Random();
             string currency = req.Request["CurrencyTM"];
-            queryString = "INSERT INTO transfer(TransferID, Currency, Amount, DestinationAccountNumber, SourceAccountNumber) VALUES (@ID,@CURRENCY,@AMOUNT,@DESTINATION,@SOURCE)";
+            queryString = "INSERT INTO transfer(TransferID, Currency, Amount, DestinationAccount, SourceAccount) VALUES (@ID,@CURRENCY,@AMOUNT,@DESTINATION,@SOURCE)";
             command = new MySqlCommand(queryString, connection);
             command.Parameters.Add("@ID", MySqlDbType.Int32);
             command.Parameters.Add("@CURRENCY", MySqlDbType.VarChar,10);
@@ -193,10 +182,24 @@ namespace IBS_Website
 
             command.ExecuteNonQuery();
 
+            queryString = string.Format("UPDATE accounts SET Balance = {0} WHERE AccountNumber = {1};", balance, sourceAccountNumber);
+            command = new MySqlCommand(queryString, connection);
+            command.ExecuteNonQuery();
+            queryString = string.Format("Select Balance from accounts where AccountNumber = {0}; ", destinationAccountNumber);
+            command = new MySqlCommand(queryString, connection);
+            MySqlDataReader read = command.ExecuteReader();
+            if (read.Read())
+            {
+                balance = read.GetFloat(0);
+                read.Close();
+                queryString = string.Format("UPDATE accounts SET Balance = {0} WHERE AccountNumber = {1};", balance + amount, destinationAccountNumber);
+                command = new MySqlCommand(queryString, connection);
+                command.ExecuteNonQuery();
+            }
             this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert('Transfered successfully');", true);
 
             //command.ExecuteNonQuery();
-            connection.Close();
+            
         }
         protected float subAmountFromBalance() {
             return balance - amount;

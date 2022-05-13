@@ -13,11 +13,11 @@ namespace IBS_Website
     public partial class TransferHistory : System.Web.UI.Page
     {
         static string databaseName = "internet_banking_system";
-        static string connstring = string.Format("Server=10.145.1.6; persistsecurityinfo=True ;database={0}; UID=user;password=123456; SslMode = none", databaseName);
+        static string connstring = string.Format("Server=192.168.1.13; persistsecurityinfo=True ;database={0}; UID=user;password=123456; SslMode = none", databaseName);
         MySqlConnection connection = new MySqlConnection(connstring);
         protected void Page_Load(object sender, EventArgs e)
         {   
-            int client_ID = 3;
+            string client_ID = Login.client_ID;
             string sqlQuery = string.Format("select AccountNumber from accounts where ClientID = {0}", client_ID);
             connection.Open();
             MySqlCommand command = new MySqlCommand(sqlQuery, connection);
@@ -39,7 +39,7 @@ namespace IBS_Website
         }
 
         protected void addToTable(string AccountNumber) {
-            string sqlQuery = string.Format("select * from transfer where SourceAccountNumber = {0}", AccountNumber);
+            string sqlQuery = string.Format("select * from transfer where SourceAccount = {0}", AccountNumber);
             MySqlCommand command = new MySqlCommand(sqlQuery, connection);
             MySqlDataReader read = command.ExecuteReader();
             string currency, destinationAccountNumber, amount, date ;
@@ -88,7 +88,9 @@ namespace IBS_Website
 
 
                 TransferTable.Rows.Add(tableRow);
+                
             }
+            read.Close();
         }
     }
 }
