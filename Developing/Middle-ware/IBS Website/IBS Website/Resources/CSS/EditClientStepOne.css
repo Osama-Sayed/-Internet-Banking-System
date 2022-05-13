@@ -1,8 +1,13 @@
-﻿* {
-    background-color: white;
+﻿
+* {
     box-sizing: border-box;
     font-family: Verdana;
     color: black;
+}
+
+.bg {
+    background-image: url("EditClientPic1.jpg");
+    background-size: cover;
 }
 
 input[type=text], input[type=email], input[type=password] {
@@ -25,26 +30,24 @@ input[type=text], input[type=email], input[type=password] {
             outline: none;
         }
 
-.LoginCA:hover {
+.EditClient:hover {
     opacity: 1;
 }
 
-.LoginCA {
+.EditClient {
     padding: 14px 40px;
     background-color: #f0600d;
     width: 50%;
     position: absolute;
-    width: 65%;
+    width: 65.5%;
     border: none;
     opacity: 0.9;
 }
 
 .container {
-    margin-top: 8%;
     margin-left: 15%;
     margin-right: 15%;
     padding: 20px;
-    background-color: white;
 }
 
 input:valid {

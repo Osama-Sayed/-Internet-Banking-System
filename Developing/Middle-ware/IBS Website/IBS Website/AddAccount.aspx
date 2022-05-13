@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Add Account</title>
-<link rel="stylesheet" href="Resources/CSS/AddAccou.css">
+<link rel="stylesheet" href="Resources/CSS/AddAccount.css">
     <link rel="icon" href="Resources/Images/ib.png" type="image/x-icon">
     <meta charset="utf-8">
     <style>

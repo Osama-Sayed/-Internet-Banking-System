@@ -10,19 +10,19 @@
 	<meta charset="utf-8">
 	<meta name="description" content="This page has the navigation bar of the bank">		
 										<!-- CSS-->
-	<link rel="stylesheet" type="text/css" href="Resources/CSS/clientprofilenavbar.css">
+	<link rel="stylesheet" type="text/css" href="Resources/CSS/ClientProfilenavbar.css">
 
 </head>
 <body>
-	<form ID="ClientProfileNavBarForm" runat="server">
+	<form ID="ClientProfileNavBarForm" runat="server" href="Home.aspx" target="_top">
     <div id="allbody">
 		<header id="top_header">
-				<a class="logolink" href="Home.aspx" target="_top"><img id="header_img" src="Resources/Images/ib.png" /></a>
+				<a class="logolink" href="Home.aspx" target="_top"><img id="header_img" src="Resources/Images/ib.png"/></a>
 
 				<h2 id="logoname">Internet Banking System</h2>
 				
 		</header>
-		 <asp:Button ID="LogoutBtn" runat="server" Text="Logout" class="logoutbu" OnClick="LogoutBtn_Click" ></asp:Button>
+		 <asp:Button ID="LogoutBtn" runat="server" Text="Logout" class="logoutbu" OnClick="LogoutBtn_Click"></asp:Button>
 		</div>
 		</form>
 </body>

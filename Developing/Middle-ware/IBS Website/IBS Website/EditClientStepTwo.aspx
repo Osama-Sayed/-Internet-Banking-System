@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Edit Client</title>
-<link rel="stylesheet" href="Resources/CSS/EditClientSecStep.css">
+<link rel="stylesheet" href="Resources/CSS/EditClientStepTwo.css">
     <link rel="icon" href="Resources/Images/ib.png" type="image/x-icon">
     <style>
         
@@ -32,7 +32,6 @@
         if (input.value != document.getElementById('PasswordEC').value) {
             input.setCustomValidity('Passwords do not match');
         } else {
-            // input is valid -- reset the error message
             input.setCustomValidity('');
         }
     }

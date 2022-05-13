@@ -5,13 +5,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
    <title>image back Admin</title>
-    <style>
-        .bg {
-    background-image: url("Resources\Images\adminimage.jpg");
+   <style>
+        
+.bg {
+    background-image: url("Resources/Images/adminimage.jpg");
 }
     </style>
 </head>
-<body>
+<body class="bg">
     <form id="form1" runat="server">
         <div>
         </div>

@@ -26,19 +26,18 @@
             if (input.value != document.getElementById('PasswordCR').value) {
                 input.setCustomValidity('Passwords do not match');
             } else {
-                // input is valid -- reset the error message
                 input.setCustomValidity('');
             }
         }
     </script>
-    <asp:TextBox ID="AccountNumCR" runat="server" type="text" placeholder="Account Number*"  pattern="[0-9]+" title="An Account Number can't include character or special character" name="accountnumber" required OnTextChanged="AccountNumCR_TextChanged" ></asp:TextBox>
+    <asp:TextBox ID="AccountNumCR" runat="server" type="text" placeholder="Account Number*"  pattern="[0-9]+" title="Account Numbers can't include characters or special characters" name="accountnumber" required OnTextChanged="AccountNumCR_TextChanged" ></asp:TextBox>
     <br>
-	<asp:TextBox ID="EmailCR" runat="server" type="email" placeholder="E-mail*" name="clientemail" title="The email format must be valid" required OnTextChanged="EmailCR_TextChanged" ></asp:TextBox> 
+	<asp:TextBox ID="EmailCR" runat="server" type="email" placeholder="E-mail*" name="clientemail"  required OnTextChanged="EmailCR_TextChanged"  ></asp:TextBox> 
 	<br>
 	<asp:TextBox ID="PhoneNumCR" runat="server" type="text" placeholder="Phone Number*" name="phone" pattern="[0-9]+" title="A phone can only have numbers" required OnTextChanged="PhoneNumCR_TextChanged" ></asp:TextBox>
 	<br>
     <br>
-	  <asp:Button ID="RegisterBtn" runat="server" Text="Register" class="RegC" OnClick="RegisterBtn_Click" ></asp:Button>
+	  <asp:Button ID="RegisterBtn" runat="server" Text="Register" class="RegC" OnClick="RegisterBtn_Click" OnClientClick="target ='_blank';"></asp:Button>
   </div>
 </form>
 

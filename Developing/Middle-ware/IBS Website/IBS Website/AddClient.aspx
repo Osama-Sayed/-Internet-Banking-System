@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Add Client</title>
-    <link rel="stylesheet" href="Resources/CSS/ADDClientt.css">
+    <link rel="stylesheet" href="Resources/CSS/AddClient.css">
     <link rel="icon" href="Resources/Images/ib.png" type="image/x-icon">
     <style>
         
@@ -19,7 +19,7 @@
   <div class="container">
     <h1><center>Add Client</center></h1>
 	<br>
-    <asp:TextBox ID="UsernameAC" runat="server" placeholder="Username*" name="name" pattern="[a-zA-Z0-9 ]+" title="Username can’t include special characters" required OnTextChanged="UsernameAC_TextChanged" ></asp:TextBox>
+    <asp:TextBox ID="UsernameAC" runat="server" placeholder="Client Username*" name="username" pattern="[a-zA-Z0-9 ]+" title="Username can’t include special characters" required OnTextChanged="UsernameAC_TextChanged" ></asp:TextBox>
 	<br>
     <asp:TextBox ID="passwordAC" runat="server" type="password" placeholder="Password*" name="psw" required OnTextChanged="passwordAC_TextChanged" ></asp:TextBox>
 	<br>

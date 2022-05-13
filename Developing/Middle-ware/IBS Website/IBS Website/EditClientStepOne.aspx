@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Edit Client</title>
-<link rel="stylesheet" href="Resources/CSS/EditClientFirstStep.css">
+<link rel="stylesheet" href="Resources/CSS/EditClientStepOne.css">
     <link rel="icon" href="Resources/Images/ib.png" type="image/x-icon">
     <style>
         
