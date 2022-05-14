@@ -13,7 +13,7 @@ namespace IBS_Website
         HttpContext req;
         string userName, Client_ID;
         static string databaseName = "internet_banking_system";
-        static string connstring = string.Format("Server=192.168.1.13; persistsecurityinfo=True ;database={0}; UID=user;password=123456; SslMode = none", databaseName);
+        static string connstring = string.Format("Server=10.145.2.180; persistsecurityinfo=True ;database={0}; UID=user;password=123456; SslMode = none", databaseName);
         MySqlConnection connection = new MySqlConnection(connstring);
         protected void Page_Load(object sender, EventArgs e)
         {
