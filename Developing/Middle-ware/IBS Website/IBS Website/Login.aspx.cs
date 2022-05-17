@@ -25,6 +25,7 @@ namespace IBS_Website
             catch (Exception ex)
             {
                 this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' Server is not responding please check your connections '); windows.loaction ='LoginFrame.html';", true);
+                Response.Redirect("Home.aspx");
             }
 
         }
@@ -43,9 +44,17 @@ namespace IBS_Website
         {
             string userName = UsernameL.Text;
             string password = PasswordL.Text;
-            
-            string sqlQuery ="select ClientID from client where UserName = @UserName and Password = @Pass ";
-            MySqlCommand command = new MySqlCommand(sqlQuery,connection);
+
+            if (!LoginAsClient(userName, password))
+            {
+                if (!LoginAsAdmin(userName, password)) {
+                    this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' username or password is wrong '); windows.loaction ='LoginFrame.html';", true);
+                }
+            }
+        }
+        public bool LoginAsClient(string userName, string password) {
+            string sqlQuery = "select ClientID from client where UserName = @UserName and Password = @Pass ";
+            MySqlCommand command = new MySqlCommand(sqlQuery, connection);
             command.Parameters.Add("@UserName", MySqlDbType.VarChar, 20);
             command.Parameters.Add("@Pass", MySqlDbType.VarChar, 50);
 
@@ -54,34 +63,32 @@ namespace IBS_Website
             MySqlDataReader read = command.ExecuteReader();
             if (read.Read())
             {
-                client_ID= read.GetString(0);
+                client_ID = read.GetString(0);
                 read.Close();
                 Response.Redirect("ClientFrame.html");
-
+                return true;
             }
-            else {
-                read.Close();
-                sqlQuery = "select AdminUserName from admin where AdminUserName = @AdminUserName and Password = @Pass ";
-                command = new MySqlCommand(sqlQuery, connection);
-                command.Parameters.Add("@AdminUserName", MySqlDbType.VarChar,20);
+            read.Close();
+            return false;
+        }
+        public bool LoginAsAdmin(string userName, string password) { 
+        string sqlQuery = "select AdminUserName from admin where AdminUserName = @AdminUserName and Password = @Pass ";
+               MySqlCommand command = new MySqlCommand(sqlQuery, connection);
+                 command.Parameters.Add("@AdminUserName", MySqlDbType.VarChar,20);
                 command.Parameters.Add("@Pass", MySqlDbType.VarChar, 50);
 
                 command.Parameters["@AdminUserName"].Value = userName;
                 command.Parameters["@Pass"].Value = password;
-                read = command.ExecuteReader();
-                if (read.Read())
-                {
-                    adminUserName = read.GetString(0);
-                    read.Close();
-                    Response.Redirect("AdminFrame.html");
-                }
-                else 
-                {
-
-                    this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' username or password is wrong '); windows.loaction ='LoginFrame.html';", true);
-                    //MessageBox.Show("username or password is wrong","ERROR");
-                }
+                MySqlDataReader read = command.ExecuteReader();
+            if (read.Read())
+            {
+                adminUserName = read.GetString(0);
+                read.Close();
+                Response.Redirect("AdminFrame.html");
+                return true;
             }
-        }
+            read.Close();
+            return false;
+        } 
     }
 }

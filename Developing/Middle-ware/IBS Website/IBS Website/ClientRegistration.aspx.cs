@@ -32,6 +32,8 @@ namespace IBS_Website
             catch(Exception ex)
             {
                 this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' Server is not responding please check your connections ');", true);
+                Response.Redirect("ClienttFrame.html");
+
             }
         }
 
@@ -82,8 +84,9 @@ namespace IBS_Website
                     addClient();
                     addAccount();
                     addClientPhoneNumber();
-                    Response.Redirect("Home.aspx");
-                    
+                    Response.Redirect("ClienttFrame.html");
+
+
                 }
             }
         }
@@ -100,6 +103,7 @@ namespace IBS_Website
             {
                 read.Close();
                 this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' this username is already taken ');", true);
+                Response.Redirect("ClienttFrame.html");
                 return false;
             }
             read.Close();
@@ -114,6 +118,8 @@ namespace IBS_Website
             else 
             {
                 this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' passwords don’t match ');", true);
+                Response.Redirect("ClienttFrame.html");
+
                 return false;
             }
         }
@@ -162,6 +168,7 @@ namespace IBS_Website
             command.ExecuteNonQuery();
 
             this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' User registered succesfully ');", true);
+            Response.Redirect("ClienttFrame.html");
 
 
         }

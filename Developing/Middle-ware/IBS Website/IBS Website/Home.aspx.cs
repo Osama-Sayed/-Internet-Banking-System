@@ -16,12 +16,12 @@ namespace IBS_Website
 
         protected void LoginH_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("LoginFrame.html");
         }
 
         protected void RegisterH_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("RegisterFrame.html");
         }
     }
 }

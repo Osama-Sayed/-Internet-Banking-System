@@ -30,6 +30,8 @@ namespace IBS_Website
             catch (Exception ex)
             {
                 this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' Server is not responding please check your connections ');", true);
+                Response.Redirect("AdminFrame.html");
+
             }
         }
 
@@ -76,8 +78,10 @@ namespace IBS_Website
                 addPhoneNumber();
                 addAccount();
                 this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' Client Added Successfully ');", true);
+                Response.Redirect("AdminFrame.html");
+
             }
-            
+
         }
         protected void addClient()
         {
@@ -130,6 +134,8 @@ namespace IBS_Website
             if (read.Read())
             {
                 this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' this username is already taken ');", true);
+                Response.Redirect("AdminFrame.html");
+
                 return false;
             }
             read.Close();

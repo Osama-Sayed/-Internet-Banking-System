@@ -23,7 +23,9 @@ namespace IBS_Website
             }
             catch (Exception ex) {
                 this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' Server is not responding please check your connections ');", true);
-                
+                Response.Redirect("ClienttFrame.html");
+
+
 
             }
 
@@ -37,9 +39,11 @@ namespace IBS_Website
             string destinationAccountNum = req.Request["DestinationTM"];
             if (sourceAccountNum == destinationAccountNum) {
                 this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert('Source Account number and destination account number are the same');", true);
+                Response.Redirect("ClienttFrame.html");
+
             }
 
-            
+
             else
             {
                 if (checkIfAccountsnumberValid(sourceAccountNum, destinationAccountNum))
@@ -56,6 +60,8 @@ namespace IBS_Website
                             else 
                             {
                                 this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' The amount exceeds the allowed limit of 20,000 EGP ');", true);
+                                Response.Redirect("ClienttFrame.html");
+
                             }
                         }
                     }
@@ -85,6 +91,7 @@ namespace IBS_Website
                 {
                     read.Close();
                     this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' The destination account is invalid ');", true);
+                    Response.Redirect("ClienttFrame.html");
                     return false;
                 }
 
@@ -93,6 +100,8 @@ namespace IBS_Website
             {
                 read.Close();
                 this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' The source account is invalid ');", true);
+                Response.Redirect("ClienttFrame.html");
+
                 return false;
             }
         }
@@ -115,6 +124,8 @@ namespace IBS_Website
                 if (float.IsNaN(amount))
                 {
                     this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' please choose a valid currency ');", true);
+                   Response.Redirect("ClienttFrame.html");
+
                     return false;
                 }
                 else
@@ -126,6 +137,8 @@ namespace IBS_Website
                     }
                     else {
                         this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' unsuffient balance ');", true);
+                        Response.Redirect("ClienttFrame.html");
+
                         return false;
 
                     }
@@ -138,7 +151,7 @@ namespace IBS_Website
         protected float convertToEGP(float amount)
         {
             string currency = req.Request["CurrencyTM"];
-            string alert = string.Format("alert(' {0}');", currency);
+            //string alert = string.Format("alert(' {0}');", currency);
             switch (currency) {
                 case "EGP":
                     return amount;
@@ -199,6 +212,7 @@ namespace IBS_Website
             }
             this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert('Transfered successfully');window.location='ClientFrame.html';", true);
             //Response.Redirect("ClientFrame.html");
+            Response.Redirect("ClientFrame.html");
 
 
             //command.ExecuteNonQuery();

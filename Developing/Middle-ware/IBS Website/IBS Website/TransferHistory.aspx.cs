@@ -50,7 +50,7 @@ namespace IBS_Website
             while (read.Read()) {
                 currency = read.GetString(1);
                 amount = read.GetString(2);
-                destinationAccountNumber = read.GetString(3);
+                destinationAccountNumber = read.GetString(4);
                 date = read.GetString(5);
                 sourceLbl = new Label();
                 sourceLbl.Text = AccountNumber;

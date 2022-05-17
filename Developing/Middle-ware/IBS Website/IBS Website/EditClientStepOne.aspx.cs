@@ -19,7 +19,7 @@ namespace IBS_Website
         public static string Username;
 
         static string databaseName = "internet_banking_system";
-        static string connstring = string.Format("10.145.2.180; persistsecurityinfo=True ;database={0}; UID=user;password=123456; SslMode = none", databaseName);
+        static string connstring = string.Format("Server=10.145.2.180; persistsecurityinfo=True ;database={0}; UID=user;password=123456; SslMode = none", databaseName);
         MySqlConnection connection = new MySqlConnection(connstring);
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -69,6 +69,8 @@ namespace IBS_Website
             {
                 read.Close();
                 this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' this client user name doesn’t exist on the system ');", true);
+                Response.Redirect("ClienttFrame.html");
+
                 return false;
             }
         }

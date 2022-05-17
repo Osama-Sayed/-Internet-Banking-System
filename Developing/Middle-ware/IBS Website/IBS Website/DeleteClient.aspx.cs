@@ -24,6 +24,7 @@ namespace IBS_Website
             catch (Exception ex)
             {
                 this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' Server is not responding please check your connections ');", true);
+                Response.Redirect("ClienttFrame.html");
 
             }
 
@@ -67,6 +68,8 @@ namespace IBS_Website
             {
                 read.Close();
                 this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' this client user name doesn’t exist on the system ');", true);
+                Response.Redirect("ClienttFrame.html");
+
             }
         }
 

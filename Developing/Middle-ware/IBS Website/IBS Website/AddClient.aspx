@@ -43,7 +43,7 @@
 	<asp:TextBox ID="PhoneNumAC" runat="server" type="text" placeholder="Phone Number*" name="phone" pattern="[0-9]+" title="A phone can only have numbers" required OnTextChanged="PhoneNumAC_TextChanged" ></asp:TextBox>
 	<br>
     <br>
-    <asp:Button ID="RegisterBtn" runat="server" Text="Add Client" class="AddC" OnClick="RegisterBtn_Click"></asp:Button>
+    <asp:Button ID="RegisterBtn" runat="server" Text="Add Client" class="AddC" OnClick="RegisterBtn_Click" target="_top"></asp:Button>
   </div>
 </form>
 

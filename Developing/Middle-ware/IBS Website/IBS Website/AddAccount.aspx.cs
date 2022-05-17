@@ -27,6 +27,8 @@ namespace IBS_Website
             catch (Exception ex)
             {
                 this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' Server is not responding please check your connections ');", true);
+                Response.Redirect("AdminFrame.html");
+
 
             }
 
@@ -95,14 +97,20 @@ namespace IBS_Website
                 catch (Exception ex)
                 {
                     this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' another client already owns this account number ');", true);
+                    Response.Redirect("AdminFrame.html");
+
                 }
                 connection.Close();
                 this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' Account is successfully created ');", true);
+                Response.Redirect("AdminFrame.html");
+
 
             }
             else 
             {
-                this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' This Client User Name Doesn't Excit ');", true);
+                this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' This Client User Name Doesn't Exist ');", true);
+                Response.Redirect("AdminFrame.html");
+
 
             }
             read.Close();
