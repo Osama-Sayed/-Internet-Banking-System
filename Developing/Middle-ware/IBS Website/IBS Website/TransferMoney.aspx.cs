@@ -1,10 +1,11 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using MySql.Data.MySqlClient;
+
 namespace IBS_Website
 {
     public partial class TransferMoney : System.Web.UI.Page
@@ -23,9 +24,9 @@ namespace IBS_Website
             }
             catch (Exception ex) {
                 this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' Server is not responding please check your connections ');", true);
-                Response.Redirect("ClienttFrame.html");
+                Response.Redirect("ClientFrame.html");
 
-
+                
 
             }
 
@@ -38,8 +39,9 @@ namespace IBS_Website
             string sourceAccountNum = req.Request["SourceTM"];
             string destinationAccountNum = req.Request["DestinationTM"];
             if (sourceAccountNum == destinationAccountNum) {
+                System.Windows.MessageBox.Show("9");
                 this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert('Source Account number and destination account number are the same');", true);
-                Response.Redirect("ClienttFrame.html");
+                Response.Redirect("ClientFrame.html");
 
             }
 
@@ -57,10 +59,11 @@ namespace IBS_Website
                                 addTransfer(sourceAccountNum, destinationAccountNum);
                                 
                             }
-                            else 
+                            else
                             {
+                                System.Windows.MessageBox.Show("7");
                                 this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' The amount exceeds the allowed limit of 20,000 EGP ');", true);
-                                Response.Redirect("ClienttFrame.html");
+                                Response.Redirect("ClientFrame.html");
 
                             }
                         }
@@ -90,8 +93,9 @@ namespace IBS_Website
                 else
                 {
                     read.Close();
+                    System.Windows.MessageBox.Show("saad");
                     this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' The destination account is invalid ');", true);
-                    Response.Redirect("ClienttFrame.html");
+                    Response.Redirect("ClientFrame.html");
                     return false;
                 }
 
@@ -99,8 +103,9 @@ namespace IBS_Website
             else
             {
                 read.Close();
+                System.Windows.MessageBox.Show("5");
                 this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' The source account is invalid ');", true);
-                Response.Redirect("ClienttFrame.html");
+                Response.Redirect("ClientFrame.html");
 
                 return false;
             }
@@ -123,8 +128,10 @@ namespace IBS_Website
                 amount= convertToEGP(amount);
                 if (float.IsNaN(amount))
                 {
+                    System.Windows.MessageBox.Show("3");
                     this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' please choose a valid currency ');", true);
-                   Response.Redirect("ClienttFrame.html");
+                    //MessageBox.Show();
+                    Response.Redirect("ClientFrame.html");
 
                     return false;
                 }
@@ -136,8 +143,9 @@ namespace IBS_Website
                         return true;
                     }
                     else {
+                        System.Windows.MessageBox.Show("2");
                         this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' unsuffient balance ');", true);
-                        Response.Redirect("ClienttFrame.html");
+                        Response.Redirect("ClientFrame.html");
 
                         return false;
 
@@ -173,7 +181,7 @@ namespace IBS_Website
             return amount < 20000.0f;
         }
         protected void addTransfer(string sourceAccountNumber, string destinationAccountNumber) {
-            balance = subAmountFromBalance();
+            
             string queryString;
             MySqlCommand command;
             
@@ -196,11 +204,30 @@ namespace IBS_Website
 
             command.ExecuteNonQuery();
 
-            queryString = string.Format("UPDATE accounts SET Balance = {0} WHERE AccountNumber = {1};", balance, sourceAccountNumber);
-            command = new MySqlCommand(queryString, connection);
+            updateSourceAccount(sourceAccountNumber);
+            updateDestinationAccount(destinationAccountNumber);
+            
+            this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert('Transfered successfully');window.location='ClientFrame.html';", true);
+            System.Windows.MessageBox.Show("1");
+            //Response.Redirect("ClientFrame.html");
+            Response.Redirect("ClientFrame.html");
+
+
+
+            //command.ExecuteNonQuery();
+
+        }
+        protected void updateSourceAccount (string sourceAccountNumber)
+        {
+            balance = subAmountFromBalance();
+            string queryString = string.Format("UPDATE accounts SET Balance = {0} WHERE AccountNumber = {1};", balance, sourceAccountNumber);
+            MySqlCommand command = new MySqlCommand(queryString, connection);
             command.ExecuteNonQuery();
-            queryString = string.Format("Select Balance from accounts where AccountNumber = {0}; ", destinationAccountNumber);
-            command = new MySqlCommand(queryString, connection);
+        }
+        protected void updateDestinationAccount(string destinationAccountNumber)
+        {
+            string queryString = string.Format("Select Balance from accounts where AccountNumber = {0}; ", destinationAccountNumber);
+            MySqlCommand command = new MySqlCommand(queryString, connection);
             MySqlDataReader read = command.ExecuteReader();
             if (read.Read())
             {
@@ -210,13 +237,6 @@ namespace IBS_Website
                 command = new MySqlCommand(queryString, connection);
                 command.ExecuteNonQuery();
             }
-            this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert('Transfered successfully');window.location='ClientFrame.html';", true);
-            //Response.Redirect("ClientFrame.html");
-            Response.Redirect("ClientFrame.html");
-
-
-            //command.ExecuteNonQuery();
-
         }
         protected float subAmountFromBalance() {
             return balance - amount;

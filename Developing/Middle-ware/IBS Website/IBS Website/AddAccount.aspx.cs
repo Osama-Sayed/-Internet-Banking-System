@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Windows.Forms;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -26,7 +27,8 @@ namespace IBS_Website
             }
             catch (Exception ex)
             {
-                this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' Server is not responding please check your connections ');", true);
+                MessageBox.Show("Server is not responding please check your connections");
+               // this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' Server is not responding please check your connections ');", true);
                 Response.Redirect("AdminFrame.html");
 
 
@@ -96,19 +98,22 @@ namespace IBS_Website
                 }
                 catch (Exception ex)
                 {
-                    this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' another client already owns this account number ');", true);
+                    MessageBox.Show("another client already owns this account number");
+                    //this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' another client already owns this account number ');", true);
                     Response.Redirect("AdminFrame.html");
 
                 }
                 connection.Close();
-                this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' Account is successfully created ');", true);
+                MessageBox.Show("Account is successfully created");
+                //this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' Account is successfully created ');", true);
                 Response.Redirect("AdminFrame.html");
 
 
             }
             else 
             {
-                this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' This Client User Name Doesn't Exist ');", true);
+                MessageBox.Show("This Client User Name Doesn't Exist");
+                //this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' This Client User Name Doesn't Exist ');", true);
                 Response.Redirect("AdminFrame.html");
 
 
@@ -130,7 +135,8 @@ namespace IBS_Website
                 read.Close();
                 if (counter >= 2)
                 {
-                    this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' A Client can not have more than 2 Accounts ');", true);
+                    MessageBox.Show("A Client can not have more than 2 Accounts");
+                    //this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' A Client can not have more than 2 Accounts ');", true);
                     return true;
                 }
                 else

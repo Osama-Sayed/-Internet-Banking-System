@@ -50,19 +50,8 @@ namespace IBS_Website
             {
                 Client_ID = read.GetString(0);
                 read.Close();
-
-                string sqlDeleteAccount = "DELETE from accounts where CLientID= @clientid ";
-                command = new MySqlCommand(sqlDeleteAccount, connection);
-                command.Parameters.Add("clientid", MySqlDbType.VarChar, 20);
-                command.Parameters["@clientid"].Value = Client_ID;
-                command.ExecuteNonQuery();
-
-
-                string sqlDeleteClient = "DELETE from client where userName= @UserName ";
-                command = new MySqlCommand(sqlDeleteClient, connection);
-                command.Parameters.Add("@UserName", MySqlDbType.VarChar, 20);
-                command.Parameters["@UserName"].Value = userName;
-                command.ExecuteNonQuery();
+                deleteAccount();
+                deleteClient();
             }
             else
             {
@@ -71,6 +60,22 @@ namespace IBS_Website
                 Response.Redirect("ClienttFrame.html");
 
             }
+        }
+        public void deleteAccount() {
+            MySqlCommand command;
+            string sqlDeleteAccount = "DELETE from accounts where CLientID= @clientid ";
+            command = new MySqlCommand(sqlDeleteAccount, connection);
+            command.Parameters.Add("clientid", MySqlDbType.VarChar, 20);
+            command.Parameters["@clientid"].Value = Client_ID;
+            command.ExecuteNonQuery();
+        }
+        public void deleteClient() {
+            MySqlCommand command;
+            string sqlDeleteClient = "DELETE from client where userName= @UserName ";
+            command = new MySqlCommand(sqlDeleteClient, connection);
+            command.Parameters.Add("@UserName", MySqlDbType.VarChar, 20);
+            command.Parameters["@UserName"].Value = userName;
+            command.ExecuteNonQuery();
         }
 
 

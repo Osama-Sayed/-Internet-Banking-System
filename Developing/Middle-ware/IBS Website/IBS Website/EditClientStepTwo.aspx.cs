@@ -170,7 +170,10 @@ namespace IBS_Website
 
             command.ExecuteNonQuery();
         }
+        //
         //need to see if the account number is already in the database.
+        //
+        
         protected void updateAccount()
         {
             string sqlQuery = "update accounts set AccountNumber = @accountNumber where ClientID = @clientID and AccountNumber = @oldAccountNumber";
