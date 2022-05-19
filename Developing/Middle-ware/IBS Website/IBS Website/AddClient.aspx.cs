@@ -5,17 +5,19 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Windows.Forms;
 
 namespace IBS_Website
 {
     public partial class AddClient : System.Web.UI.Page
     {
+        string adminUsername = Login.adminUserName;
         static string databaseName = "internet_banking_system";
         static string connstring = string.Format("Server=10.145.2.180; persistsecurityinfo=True ;database={0}; UID=user;password=123456; SslMode = none", databaseName);
         MySqlConnection connection = new MySqlConnection(connstring);
         string clientUsername;
-        string password;
-        string accountNum;
+        string password,confirmedPassword;
+        int accountNum;
         string email;
         string phoneNumber;
         int client_ID = new Random().Next(9000);
@@ -29,8 +31,9 @@ namespace IBS_Website
             }
             catch (Exception ex)
             {
-                this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' Server is not responding please check your connections ');", true);
-                Response.Redirect("AdminFrame.html");
+                MessageBox.Show("Server is not responding please check your connections");
+                //this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' Server is not responding please check your connections ');", true);
+                //Response.Redirect("AdminFrame.html");
 
             }
         }
@@ -65,36 +68,34 @@ namespace IBS_Website
 
         }
 
-        protected void RegisterBtn_Click(object sender, EventArgs e)
+        protected bool ConfirmPasswordEqualsPassword()
         {
-            clientUsername = UsernameAC.Text;
-            password = passwordAC.Text;
-            accountNum = AccountNumAC.Text;
-            email = EmailAC.Text;
-            phoneNumber = PhoneNumAC.Text;
-            if(clientAlreadyExists(clientUsername))
+            if (confirmedPassword == password)
             {
-                addClient();
-                addPhoneNumber();
-                addAccount();
-                this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' Client Added Successfully ');", true);
-                Response.Redirect("AdminFrame.html");
-
+                return true;
             }
+            else
+            {
+                MessageBox.Show("passwords don’t match");
+                Response.Write("<script>window.close(); </script>");
 
+                return false;
+            }
         }
         protected void addClient()
         {
-            string sqlQuery = "insert into client (ClientID, UserName, Email , Password  ) values (@ClientID , @UserName, @Email, @Password )";
+            string sqlQuery = "insert into client (ClientID, UserName, Email , Password , AdminUserName  ) values (@ClientID , @UserName, @Email, @Password ,@AdminUserName)";
             MySqlCommand command = new MySqlCommand(sqlQuery, connection);
             command.Parameters.Add("@ClientID", MySqlDbType.Int32);
             command.Parameters.Add("@UserName", MySqlDbType.VarChar, 20);
             command.Parameters.Add("@Email", MySqlDbType.VarChar, 50 );
             command.Parameters.Add("@Password", MySqlDbType.VarChar, 50);
+            command.Parameters.Add("@AdminUserName", MySqlDbType.VarChar, 20);
             command.Parameters["@ClientID"].Value = client_ID;
             command.Parameters["@UserName"].Value = clientUsername;
             command.Parameters["@Email"].Value = email;
             command.Parameters["@Password"].Value = password;
+            command.Parameters["@adminUsername"].Value = adminUsername;
             command.ExecuteNonQuery();
         }
         protected void addAccount()
@@ -133,13 +134,61 @@ namespace IBS_Website
             MySqlDataReader read = command.ExecuteReader();
             if (read.Read())
             {
-                this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' this username is already taken ');", true);
-                Response.Redirect("AdminFrame.html");
+                MessageBox.Show("this username is already taken");
+                //this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' this username is already taken ');", true);
+                //Response.Redirect("AdminFrame.html");
 
                 return false;
             }
             read.Close();
             return true;
+        }
+
+        protected void AddClientBtn_Click(object sender, EventArgs e)
+        {
+            clientUsername = UsernameAC.Text;
+            password = passwordAC.Text;
+            confirmedPassword = passwordconfAC.Text;
+            accountNum = int.Parse(AccountNumAC.Text);
+            email = EmailAC.Text;
+            phoneNumber = PhoneNumAC.Text;
+            if (clientAlreadyExists(clientUsername))
+            {
+                if (ConfirmPasswordEqualsPassword())
+                {
+                    if (isAccountNumberUnique(accountNum))
+                    {
+                        addClient();
+                        addPhoneNumber();
+                        addAccount();
+                        MessageBox.Show("Client Added Successfully");
+                        //this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' Client Added Successfully ');", true);
+                        //Response.Redirect("AdminFrame.html");
+                    }
+                }
+            }
+        }
+
+        public bool isAccountNumberUnique(int AccountNumber)
+        {
+            string sqlQuery = "select AccountNumber from accounts where AccountNumber = @AccountNO";
+            MySqlCommand command = new MySqlCommand(sqlQuery, connection);
+            command.Parameters.Add("@AccountNO", MySqlDbType.Int32);
+            command.Parameters["@AccountNO"].Value = AccountNumber;
+            MySqlDataReader read = command.ExecuteReader();
+            if (read.Read())
+            {
+                MessageBox.Show("This account number is already taken");
+                Response.Write("<script>window.close(); </script>");
+                read.Close();
+                return false;
+            }
+            else
+            {
+                read.Close();
+                return true;
+            }
+
         }
     }
 }

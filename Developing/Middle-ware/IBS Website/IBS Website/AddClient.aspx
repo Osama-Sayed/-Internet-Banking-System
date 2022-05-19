@@ -21,7 +21,7 @@
 	<br>
     <asp:TextBox ID="UsernameAC" runat="server" placeholder="Client Username*" name="username" pattern="[a-zA-Z0-9 ]+" title="Username can’t include special characters" required OnTextChanged="UsernameAC_TextChanged" ></asp:TextBox>
 	<br>
-    <asp:TextBox ID="passwordAC" runat="server" type="password" placeholder="Password*" name="psw" required OnTextChanged="passwordAC_TextChanged" ></asp:TextBox>
+    <asp:TextBox ID="passwordAC" runat="server" type="password" placeholder="Password*" pattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[/!@#$%^&*_=+-]).{8,}$" title="Password should contain at least one upper character, one lower character and at least 8 numbers" name="psw" required OnTextChanged="passwordAC_TextChanged" ></asp:TextBox>
 	<br>
     <asp:TextBox ID="passwordconfAC" runat="server" type="password" placeholder="Confirm Password*" name="psw" oninput="check(this)" required OnTextChanged="passwordconfAC_TextChanged" ></asp:TextBox>
 	
@@ -43,7 +43,7 @@
 	<asp:TextBox ID="PhoneNumAC" runat="server" type="text" placeholder="Phone Number*" name="phone" pattern="[0-9]+" title="A phone can only have numbers" required OnTextChanged="PhoneNumAC_TextChanged" ></asp:TextBox>
 	<br>
     <br>
-    <asp:Button ID="RegisterBtn" runat="server" Text="Add Client" class="AddC" OnClick="RegisterBtn_Click" target="_top"></asp:Button>
+    <asp:Button ID="RegisterBtn" runat="server" Text="Add Client" class="AddC" OnClick="AddClientBtn_Click" target="_top"></asp:Button>
   </div>
 </form>
 

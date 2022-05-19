@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
 namespace IBS_Website
@@ -32,7 +33,7 @@ namespace IBS_Website
             catch(Exception ex)
             {
                 this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' Server is not responding please check your connections ');", true);
-                Response.Redirect("ClienttFrame.html");
+               
 
             }
         }
@@ -80,12 +81,14 @@ namespace IBS_Website
             {
                 if (ConfirmPasswordEqualsPassword())
                 {
-                  
-                    addClient();
-                    addAccount();
-                    addClientPhoneNumber();
-                    Response.Redirect("ClienttFrame.html");
-
+                    if (isAccountNumberUnique(accountNumber))
+                    {
+                        addClient();
+                        addAccount();
+                        addClientPhoneNumber();
+                        Response.Write("<script>window.close(); </script>");
+                        Response.Redirect("ClientFrame.html");
+                    }
 
                 }
             }
@@ -102,8 +105,11 @@ namespace IBS_Website
             if (read.Read())
             {
                 read.Close();
-                this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' this username is already taken ');", true);
-                Response.Redirect("ClienttFrame.html");
+                MessageBox.Show("this username is already taken");
+                //this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' this username is already taken ');", true);
+                Response.Write("<script>window.close(); </script>");
+                
+                //Response.Redirect("RegisterFrame.html");
                 return false;
             }
             read.Close();
@@ -117,8 +123,9 @@ namespace IBS_Website
             }
             else 
             {
-                this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' passwords don’t match ');", true);
-                Response.Redirect("ClienttFrame.html");
+                MessageBox.Show("passwords don’t match");
+                //this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' passwords don’t match ');", true);
+                Response.Write("<script>window.close(); </script>");
 
                 return false;
             }
@@ -166,11 +173,31 @@ namespace IBS_Website
             command.Parameters["@pass"].Value = password;
 
             command.ExecuteNonQuery();
+            MessageBox.Show("User registered succesfully");
+            //this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' User registered succesfully ');", true);
+           // Response.Redirect("ClienttFrame.html");
 
-            this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' User registered succesfully ');", true);
-            Response.Redirect("ClienttFrame.html");
 
-
+        }
+        public bool isAccountNumberUnique(int AccountNumber)
+        {
+            string sqlQuery = "select AccountNumber from accounts where AccountNumber = @AccountNO";
+            MySqlCommand command = new MySqlCommand(sqlQuery,connection);
+            command.Parameters.Add("@AccountNO",MySqlDbType.Int32);
+            command.Parameters["@AccountNO"].Value = AccountNumber;
+            MySqlDataReader read = command.ExecuteReader();
+            if (read.Read()) {
+                MessageBox.Show("This account number is already taken");
+                Response.Write("<script>window.close(); </script>");
+                read.Close();
+                return false;
+            }
+            else
+            {
+                read.Close();
+                return true;
+            }
+            
         }
     }
 }

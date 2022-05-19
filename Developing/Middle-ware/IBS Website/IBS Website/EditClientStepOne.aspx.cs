@@ -69,7 +69,7 @@ namespace IBS_Website
             {
                 read.Close();
                 this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' this client user name doesn’t exist on the system ');", true);
-                Response.Redirect("ClienttFrame.html");
+                Response.Redirect("ClientFrame.html");
 
                 return false;
             }

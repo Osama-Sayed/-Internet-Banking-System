@@ -26,8 +26,6 @@ namespace IBS_Website
                 this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' Server is not responding please check your connections ');", true);
                 Response.Redirect("ClientFrame.html");
 
-                
-
             }
 
         }
@@ -39,13 +37,11 @@ namespace IBS_Website
             string sourceAccountNum = req.Request["SourceTM"];
             string destinationAccountNum = req.Request["DestinationTM"];
             if (sourceAccountNum == destinationAccountNum) {
-                System.Windows.MessageBox.Show("9");
-                this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert('Source Account number and destination account number are the same');", true);
+                System.Windows.MessageBox.Show("Source Account number and destination account number are the same");
+                //this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert('Source Account number and destination account number are the same');", true);
                 Response.Redirect("ClientFrame.html");
 
             }
-
-
             else
             {
                 if (checkIfAccountsnumberValid(sourceAccountNum, destinationAccountNum))
@@ -61,19 +57,23 @@ namespace IBS_Website
                             }
                             else
                             {
-                                System.Windows.MessageBox.Show("7");
-                                this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' The amount exceeds the allowed limit of 20,000 EGP ');", true);
+                                System.Windows.MessageBox.Show("Amount exceeds the allowed limit of 20,000 EGP");
+                                //this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' The amount exceeds the allowed limit of 20,000 EGP ');", true);
                                 Response.Redirect("ClientFrame.html");
 
                             }
                         }
+                    }
+                    else
+                    {
+                        System.Windows.MessageBox.Show("You do not own this source account number");
+                        Response.Redirect("ClientFrame.html");
                     }
 
                 }
                 
             }
         }
-
         protected bool checkIfAccountsnumberValid(string sourceAccountNumber, string destinationAccountNumber) {
             string queryString = string.Format("Select ClientID from accounts where AccountNumber = {0};", sourceAccountNumber);
             MySqlCommand command = new MySqlCommand(queryString, connection);
@@ -93,8 +93,8 @@ namespace IBS_Website
                 else
                 {
                     read.Close();
-                    System.Windows.MessageBox.Show("saad");
-                    this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' The destination account is invalid ');", true);
+                    System.Windows.MessageBox.Show("Destination account number is invalid");
+                    //this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' The destination account is invalid ');", true);
                     Response.Redirect("ClientFrame.html");
                     return false;
                 }
@@ -103,8 +103,8 @@ namespace IBS_Website
             else
             {
                 read.Close();
-                System.Windows.MessageBox.Show("5");
-                this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' The source account is invalid ');", true);
+                System.Windows.MessageBox.Show("Source account number is invalid");
+                //this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' The source account is invalid ');", true);
                 Response.Redirect("ClientFrame.html");
 
                 return false;
@@ -128,8 +128,8 @@ namespace IBS_Website
                 amount= convertToEGP(amount);
                 if (float.IsNaN(amount))
                 {
-                    System.Windows.MessageBox.Show("3");
-                    this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' please choose a valid currency ');", true);
+                    System.Windows.MessageBox.Show("Please choose a valid currency");
+                    //this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' please choose a valid currency ');", true);
                     //MessageBox.Show();
                     Response.Redirect("ClientFrame.html");
 
@@ -143,10 +143,9 @@ namespace IBS_Website
                         return true;
                     }
                     else {
-                        System.Windows.MessageBox.Show("2");
-                        this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' unsuffient balance ');", true);
+                        System.Windows.MessageBox.Show("Source account number doesn't have the necessary balance");
+                        //this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' unsuffient balance ');", true);
                         Response.Redirect("ClientFrame.html");
-
                         return false;
 
                     }
@@ -164,11 +163,11 @@ namespace IBS_Website
                 case "EGP":
                     return amount;
                     
-                case "EUR":
-                    return amount * 18.0f;
+                /*case "EUR":
+                    return amount * 18.0f;*/
                     
                 case "USD":
-                    return amount * 20.0f;
+                    return amount * 15.0f;
                     
                 case "":
                     return float.NaN;
@@ -195,7 +194,6 @@ namespace IBS_Website
             command.Parameters.Add("@DESTINATION", MySqlDbType.Int32);
             command.Parameters.Add("@SOURCE", MySqlDbType.Int32);
             
-
             command.Parameters["@ID"].Value = rand.Next(9000);
             command.Parameters["@CURRENCY"].Value = currency;
             command.Parameters["@AMOUNT"].Value = int.Parse(AmountTM.Text);
@@ -207,8 +205,8 @@ namespace IBS_Website
             updateSourceAccount(sourceAccountNumber);
             updateDestinationAccount(destinationAccountNumber);
             
-            this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert('Transfered successfully');window.location='ClientFrame.html';", true);
-            System.Windows.MessageBox.Show("1");
+            //this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert('Money is transfered successfully');window.location='ClientFrame.html';", true);
+            System.Windows.MessageBox.Show("Money is successfully transferred");
             //Response.Redirect("ClientFrame.html");
             Response.Redirect("ClientFrame.html");
 

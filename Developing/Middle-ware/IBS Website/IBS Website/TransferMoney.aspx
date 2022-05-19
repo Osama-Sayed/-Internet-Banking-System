@@ -30,8 +30,7 @@
 	<asp:DropDownList ID="CurrencyTM" runat="server" class="currency" name="currency" >
 
     <asp:ListItem Value="">Select Currency</asp:ListItem>
-    <asp:ListItem value="EGP">Egyptian Pound</asp:ListItem>
-    <asp:ListItem value="EUR">Euro</asp:ListItem>    
+    <asp:ListItem value="EGP">Egyptian Pound</asp:ListItem>   
     <asp:ListItem value="USD">US Dollar</asp:ListItem>
  
     </asp:DropDownList>
