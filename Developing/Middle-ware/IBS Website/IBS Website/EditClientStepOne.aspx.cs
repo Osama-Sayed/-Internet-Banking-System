@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
 namespace IBS_Website
@@ -68,8 +69,9 @@ namespace IBS_Website
             else
             {
                 read.Close();
-                this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' this client user name doesn’t exist on the system ');", true);
-                Response.Redirect("ClientFrame.html");
+                MessageBox.Show("this client username doesn’t exist on the system");
+                //this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' this client user name doesn’t exist on the system ');", true);
+                Response.Redirect("imgbackadmin.aspx");
 
                 return false;
             }
@@ -103,6 +105,7 @@ namespace IBS_Website
             {
                 AccountNumber = read.GetString(0);
             }
+
             read.Close();
 
         }

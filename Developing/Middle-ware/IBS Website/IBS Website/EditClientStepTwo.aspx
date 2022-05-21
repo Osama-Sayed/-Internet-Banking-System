@@ -23,9 +23,9 @@
 	<br>
     <asp:TextBox ID="UsernameEC" runat="server" placeholder="Username*" name="name" pattern="[a-zA-Z0-9 ]+" title="Username can’t include special characters" required OnTextChanged="UsernameEC_TextChanged" ></asp:TextBox>
 	<br>
-    <asp:TextBox ID="PasswordEC" runat="server" type="password" placeholder="Password*" name="psw" required OnTextChanged="PasswordEC_TextChanged" ></asp:TextBox>
+    <asp:TextBox ID="PasswordEC" runat="server" type="password" placeholder="Password*" name="psw" pattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[/!@#$%^&*_=+-]).{8,}$" title="Password should contain at least one upper character, one lower character and at least 8 numbers" required OnTextChanged="PasswordEC_TextChanged" ></asp:TextBox>
 	<br>
-    <asp:TextBox ID="PasswordconEC" runat="server" type="password" placeholder="Confirm Password*" name="psw" oninput="check(this)" required OnTextChanged="PasswordconEC_TextChanged" ></asp:TextBox>
+    <asp:TextBox ID="PasswordconEC" runat="server" type="password" placeholder="Confirm Password*" name="psw" oninput="check(this)" required pattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[/!@#$%^&*_=+-]).{8,}$" title="Password should contain at least one upper character, one lower character and at least 8 numbers" OnTextChanged="PasswordconEC_TextChanged" ></asp:TextBox>
 	<br>
 	<script language='javascript' type='text/javascript'>
     function check(input) {
