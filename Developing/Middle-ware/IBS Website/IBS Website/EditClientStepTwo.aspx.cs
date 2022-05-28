@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
 namespace IBS_Website
@@ -207,9 +208,9 @@ namespace IBS_Website
             command.Parameters["@pass"].Value = password;
 
             command.ExecuteNonQuery();
-
-            this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' User edited succesfully ');", true);
-            Response.Redirect("AdminFrame.html");
+            MessageBox.Show("User edited succesfully");
+            //this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' User edited succesfully ');", true);
+            Response.Redirect("imgbackadmin.aspx");
 
 
 
