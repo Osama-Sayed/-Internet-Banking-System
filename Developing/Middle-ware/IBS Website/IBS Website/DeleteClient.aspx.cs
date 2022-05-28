@@ -24,8 +24,9 @@ namespace IBS_Website
             }
             catch (Exception ex)
             {
-                this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' Server is not responding please check your connections ');", true);
-                Response.Redirect("ClientFrame.html");
+                MessageBox.Show(" Server is not responding please check your connections ");
+                //this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ex", "alert(' Server is not responding please check your connections ');", true);
+                Response.Redirect("AdminFrame.html");
 
             }
 
